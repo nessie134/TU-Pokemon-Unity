@@ -109,13 +109,14 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         {
             if (IsAlive)
             {
-                int damage = Math.Max(s.Power - Defense, 0);
+                int damage = Math.Max(s.Power - Defense, 0);// Math.Max permet de prendre le plus grand des deux nombres
+                                                            //car on ne peut pas faire de dégâts négatifs donc on met 0 si le dégât est négatif.
+
                 CurrentHealth = Math.Max(CurrentHealth - damage, 0);
 
                 if (CurrentHealth <= 0)
                 {
-                    CurrentHealth = 0;
-                    // Character is no longer alive
+                    CurrentHealth = 0;//on reset la vie
                 }
             }
         }
@@ -128,7 +129,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         {
             if (newEquipment == null)
             {
-                throw new ArgumentNullException("Equipment cannot be null.");
+                throw new ArgumentNullException("L'equipment ne peut pas etre null.");
             }
 
             CurrentEquipment = newEquipment;

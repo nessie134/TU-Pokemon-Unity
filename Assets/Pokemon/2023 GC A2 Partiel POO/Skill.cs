@@ -26,6 +26,10 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// </summary>
         public StatusPotential Status { get; private set; }
 
+
+
     }
+
+
 
 }
