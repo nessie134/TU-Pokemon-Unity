@@ -46,7 +46,7 @@ namespace _2023_GC_A2_Partiel_POO.Tests.Level_2
             Assert.That(c.Speed, Is.EqualTo(32));
 
             // Increase MaxHealth doesn't increase CurrentHealth
-            Assert.That(c.CurrentHealth, Is.EqualTo(100));  
+            Assert.That(c.CurrentHealth, Is.EqualTo(100));
 
             // Then remove equipment
             c.Unequip();
@@ -77,15 +77,15 @@ namespace _2023_GC_A2_Partiel_POO.Tests.Level_2
             var oldHealth = pikachu.CurrentHealth;
 
             pikachu.ReceiveAttack(punch); // hp : 100 => 60
-            Assert.That(pikachu.CurrentHealth, 
+            Assert.That(pikachu.CurrentHealth,
                 Is.EqualTo(oldHealth - (punch.Power - pikachu.Defense))); // 100 - (70-30)
             Assert.That(pikachu.CurrentStatus, Is.EqualTo(null));
             Assert.That(pikachu.IsAlive, Is.EqualTo(true));
-            
+
             pikachu.ReceiveAttack(punch); // hp : 60 => 20
             Assert.That(pikachu.CurrentHealth, Is.EqualTo(20));
             Assert.That(pikachu.IsAlive, Is.EqualTo(true));
-            
+
             pikachu.ReceiveAttack(punch); // hp : 20 => 0
             Assert.That(pikachu.CurrentHealth, Is.EqualTo(0));
             Assert.That(pikachu.IsAlive, Is.EqualTo(false));
@@ -103,12 +103,12 @@ namespace _2023_GC_A2_Partiel_POO.Tests.Level_2
             var oldHealth = pikachu.CurrentHealth;
 
             pikachu.ReceiveAttack(punch); // hp : 100 => 70
-            Assert.That(pikachu.CurrentHealth, Is.EqualTo(70)); 
+            Assert.That(pikachu.CurrentHealth, Is.EqualTo(70));
             Assert.That(pikachu.CurrentStatus, Is.EqualTo(null));
             Assert.That(pikachu.IsAlive, Is.EqualTo(true));
 
             pikachu.ReceiveAttack(punch); // hp : 70 => 40
-            Assert.That(pikachu.CurrentHealth, Is.EqualTo(40)); 
+            Assert.That(pikachu.CurrentHealth, Is.EqualTo(40));
             Assert.That(pikachu.IsAlive, Is.EqualTo(true));
 
             pikachu.ReceiveAttack(punch); // hp : 40 => 10

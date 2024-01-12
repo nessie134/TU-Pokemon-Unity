@@ -5,7 +5,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
     /// Enum des status de chaque attaque (voir plus bas)
     /// </summary>
     public enum StatusPotential { NONE, SLEEP, BURN, CRAZY }
-    
+
     public class StatusEffect
     {
         /// <summary>

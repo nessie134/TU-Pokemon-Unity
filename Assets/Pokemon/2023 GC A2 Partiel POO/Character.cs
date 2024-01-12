@@ -10,19 +10,19 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// <summary>
         /// Stat de base, HP
         /// </summary>
-        int _baseHealth;
+        int _baseHealth = 100;
         /// <summary>
         /// Stat de base, ATK
         /// </summary>
-        int _baseAttack;
+        int _baseAttack = 50;
         /// <summary>
         /// Stat de base, DEF
         /// </summary>
-        int _baseDefense;
+        int _baseDefense = 30;
         /// <summary>
         /// Stat de base, SPE
         /// </summary>
-        int _baseSpeed;
+        int _baseSpeed = 20;
         /// <summary>
         /// Type de base
         /// </summary>
@@ -40,7 +40,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// HP actuel du personnage
         /// </summary>
         public int CurrentHealth { get; private set; }
-        public TYPE BaseType { get => _baseType;}
+        public TYPE BaseType { get => _baseType; }
         /// <summary>
         /// HPMax, prendre en compte base et equipement potentiel
         /// </summary>
@@ -102,7 +102,17 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// <exception cref="NotImplementedException"></exception>
         public void ReceiveAttack(Skill s)
         {
-            throw new NotImplementedException();
+            if (IsAlive)
+            {
+                int damage = s.Power - Defense;
+                CurrentHealth -= damage;
+
+                if (CurrentHealth <= 0)
+                {
+                    CurrentHealth = 0;
+                    // Character is no longer alive
+                }
+            }
         }
         /// <summary>
         /// Equipe un objet au personnage
@@ -111,14 +121,20 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// <exception cref="ArgumentNullException">Si equipement est null</exception>
         public void Equip(Equipment newEquipment)
         {
-            throw new NotImplementedException();
+            if (newEquipment == null)
+            {
+                throw new ArgumentNullException("Equipment cannot be null.");
+            }
+
+            CurrentEquipment = newEquipment;
+
         }
         /// <summary>
         /// Desequipe l'objet en cours au personnage
         /// </summary>
         public void Unequip()
         {
-            throw new NotImplementedException();
+            CurrentEquipment = null;
         }
 
     }

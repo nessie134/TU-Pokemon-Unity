@@ -8,7 +8,12 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
     {
         public Equipment(int bonusHealth, int bonusAttack, int bonusDefense, int bonusSpeed)
         {
-            
+            // Constructor initializes the bonus stats of the equipment.
+            BonusHealth = bonusHealth;
+            BonusAttack = bonusAttack;
+            BonusDefense = bonusDefense;
+            BonusSpeed = bonusSpeed;
+
         }
 
         public int BonusHealth { get; protected set; }
