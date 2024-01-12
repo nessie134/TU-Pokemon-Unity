@@ -14,6 +14,16 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
 
         public Fight(Character character1, Character character2)
         {
+            if (character1 == null)
+            {
+                throw new ArgumentNullException(nameof(character1), "Character 1 cannot be null.");
+            }
+
+            if (character2 == null)
+            {
+                throw new ArgumentNullException(nameof(character2), "Character 2 cannot be null.");
+            }
+
             Character1 = character1;
             Character2 = character2;
             IsFightFinished = false;
