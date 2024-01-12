@@ -26,7 +26,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// <summary>
         /// Type de base
         /// </summary>
-        TYPE _baseType;
+        TYPE _baseType = TYPE.NORMAL;
 
         public Character(int baseHealth, int baseAttack, int baseDefense, int baseSpeed, TYPE baseType)
         {
@@ -35,6 +35,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
             _baseDefense = baseDefense;
             _baseSpeed = baseSpeed;
             _baseType = baseType;
+            CurrentHealth = MaxHealth;
         }
         /// <summary>
         /// HP actuel du personnage
@@ -48,7 +49,8 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         {
             get
             {
-                throw new NotImplementedException();
+                int equipmentBonus = (CurrentEquipment != null) ? CurrentEquipment.BonusHealth : 0;
+                return _baseHealth + equipmentBonus;
             }
         }
         /// <summary>
@@ -58,7 +60,8 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         {
             get
             {
-                throw new NotImplementedException();
+                int equipmentBonus = (CurrentEquipment != null) ? CurrentEquipment.BonusAttack : 0;
+                return _baseAttack + equipmentBonus;
             }
         }
         /// <summary>
@@ -68,7 +71,8 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         {
             get
             {
-                throw new NotImplementedException();
+                int equipmentBonus = (CurrentEquipment != null) ? CurrentEquipment.BonusDefense : 0;
+                return _baseDefense + equipmentBonus;
             }
         }
         /// <summary>
@@ -78,7 +82,8 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         {
             get
             {
-                throw new NotImplementedException();
+                int equipmentBonus = (CurrentEquipment != null) ? CurrentEquipment.BonusSpeed : 0;
+                return _baseSpeed + equipmentBonus;
             }
         }
         /// <summary>
@@ -90,7 +95,7 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         /// </summary>
         public StatusEffect CurrentStatus { get; private set; }
 
-        public bool IsAlive => throw new NotImplementedException();
+        public bool IsAlive => CurrentHealth > 0;
 
 
         /// <summary>
@@ -104,8 +109,8 @@ namespace _2023_GC_A2_Partiel_POO.Level_2
         {
             if (IsAlive)
             {
-                int damage = s.Power - Defense;
-                CurrentHealth -= damage;
+                int damage = Math.Max(s.Power - Defense, 0);
+                CurrentHealth = Math.Max(CurrentHealth - damage, 0);
 
                 if (CurrentHealth <= 0)
                 {
